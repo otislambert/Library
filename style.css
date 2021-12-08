@@ -57,12 +57,26 @@ header {
 	margin-left: 20px;
 }
 
+.read-btn {
+	margin-left: 75px;
+}
+
 .button:hover {
 	box-shadow: 0 0 4px 0 rgba(174, 16, 16, 1);
 }
 
+#shelf-wrapper {
+	margin: 20px auto 0 auto;
+}
+
+#shelf-options {
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
 #bookshelf {
-	margin-top: 50px;
+	margin-top: 10px;
 	border-top: grey solid 1px;
 	align-items: stretch;
 	width: 70vw;
@@ -78,7 +92,26 @@ header {
 }
 
 .book-info {
-	flex: 2 2;
+	flex: 2 2 75%;
+}
+
+.info-table {
+	gap: 20px;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.info-table div {
+	padding-left: 10px;
+	border-right: grey solid 1px;
+}
+
+.small-info-box {
+	flex: 1 1 30px;
+}
+
+.large-info-box {
+		flex: 2 1 100px;
 }
 
 #form {

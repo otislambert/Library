@@ -4,6 +4,16 @@ const form = document.querySelector('#form');
 const addBookBtn = document.querySelector('#addbook-btn');
 const closeFormBtn = document.querySelector('#close-form');
 
+const showInfoBtn = document.querySelector('#show-info');
+
+let displayInfo = false;
+
+showInfoBtn.addEventListener('click', function() {
+	displayInfo = displayInfo ? false : true;
+	console.log(displayInfo);
+	displayBooks();
+})
+
 let myLibrary = [];
 
 class book {
@@ -29,15 +39,44 @@ function displayBooks() {
 	bookshelf.textContent = '';
 	for (i in lib) {
 		const bookItem = document.createElement('div');
-		const info = document.createElement('p');
+		const info = document.createElement('div');
 		const remove = document.createElement('button');
 		const readBtn = document.createElement('button');
 
 		bookItem.classList.add('book-item');
 		bookItem.setAttribute('id', i);
 
-		
-		info.textContent = createInfo(lib[i]);
+		let bookData = function() {
+			if (displayInfo) {
+				return info.textContent = createInfo(lib[i]);
+
+			}
+			else {
+				info.classList.add('info-table');
+				info.classList.add('container');
+
+				authorSpace = document.createElement('div');
+				titleSpace = document.createElement('div');
+				pagesSpace = document.createElement('div');
+				readSpace = document.createElement('div');
+
+				authorSpace.classList.add('large-info-box');
+				titleSpace.classList.add('large-info-box');
+				pagesSpace.classList.add('small-info-box');
+				readSpace.classList.add('small-info-box');
+				
+				authorSpace.textContent = lib[i].author;
+				titleSpace.textContent = lib[i].title;
+				pagesSpace.textContent = `${lib[i].pages} pages`;
+				readSpace.textContent = lib[i].read ? 'read' : 'unread';
+				
+				info.appendChild(authorSpace);
+				info.appendChild(titleSpace);
+				info.appendChild(pagesSpace);
+				info.appendChild(readSpace);
+			}
+		}
+		bookData();
 		remove.textContent = 'remove';
 		readBtn.textContent = 'read';
 		info.classList.add('book-info');
